@@ -29,8 +29,8 @@ export const removeFromLocalStorage = <T extends string>(key: T) => {
 
 export const clearLocalStorage = () => {
   try {
-    window?.localStorage.clear()
+    window?.localStorage.clear();
   } catch (error) {
-    
+    console.log(error);
   }
-}
+};
