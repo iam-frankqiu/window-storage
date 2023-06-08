@@ -1,9 +1,15 @@
-export const getFromLocalStorage = <T, K extends string>(
+enum StorageType {
+  local = "localStorage",
+  session = "sessionStorage",
+}
+
+export const getFromStorage = <T, K extends string>(
+  type: StorageType,
   key: K,
   defaultValue?: T
 ): T | null => {
   try {
-    const data = window?.localStorage.getItem(key);
+    const data = window?.[type]?.getItem(key);
     return data ? JSON.parse(data) : defaultValue;
   } catch (error) {
     console.log(error);
@@ -11,25 +17,32 @@ export const getFromLocalStorage = <T, K extends string>(
   return null;
 };
 
-export const setToLocalStorage = <T, K extends string>(key: K, value: T) => {
+export const setToStorage = <T, K extends string>(
+  type: StorageType,
+  key: K,
+  value: T
+) => {
   try {
-    window?.localStorage.setItem(key, JSON.stringify(value));
+    window?.[type]?.setItem(key, JSON.stringify(value));
   } catch (error) {
     console.log(error);
   }
 };
 
-export const removeFromLocalStorage = <T extends string>(key: T) => {
+export const removeFromStorage = <T extends string>(
+  type: StorageType,
+  key: T
+) => {
   try {
-    window?.localStorage.removeItem(key);
+    window?.[type]?.removeItem(key);
   } catch (error) {
     console.log(error);
   }
 };
 
-export const clearLocalStorage = () => {
+export const clearStorage = (type: StorageType) => {
   try {
-    window?.localStorage.clear();
+    window?.[type]?.clear();
   } catch (error) {
     console.log(error);
   }
