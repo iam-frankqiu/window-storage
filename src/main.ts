@@ -10,11 +10,11 @@ export const getFromStorage = <T, K extends string>(
 ): T | null => {
   try {
     const data = window?.[type]?.getItem(key);
-    return data ? JSON.parse(data) : defaultValue;
+    return data ? JSON.parse(data) : defaultValue || null;
   } catch (error) {
     console.log(error);
   }
-  return null;
+  return defaultValue || null;
 };
 
 export const setToStorage = <T, K extends string>(
