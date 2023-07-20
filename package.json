@@ -4,6 +4,7 @@
   "repository": "git@github.com:iam-frankqiu/window-storage.git",
   "author": "FrankQiu <iam.frankqiu@gmail.com>",
   "license": "MIT",
+  "sideEffects": false,
   "homepage": "https://github.com/iam-frankqiu/window-storage",
   "private": false,
   "version": "0.0.1",
